@@ -1,0 +1,38 @@
+<md-content layout-padding>
+    <form name="templateForm">
+        <div layout="column" layout-align="center center" class="temp_form">
+            <md-select placeholder="Choose template" ng-model="main.template">
+                <md-option ng-value="t.name" ng-repeat="t in main.templates">{{t.name}}</md-option>
+            </md-select>
+            <md-input-container>
+                <label>Filename</label>
+                <input name="file" ng-model="main.form.filename" required>
+            </md-input-container>
+            <md-input-container>
+                <label>Title</label>
+                <input name="title" ng-model="main.form.title" required>
+            </md-input-container>
+            <md-input-container>
+                <label>Tekst lijn 1</label>
+                <input name="textOne" ng-model="main.form.textOne" md-maxlength="70">
+                <div class="error" ng-if="templateForm.textOne.$invalid">Too long!</div>
+            </md-input-container>
+            <md-input-container>
+                <label>Tekst lijn 2</label>
+                <input  name="textTwo" ng-model="main.form.textTwo" md-maxlength="70">
+                <div class="error" ng-if="templateForm.textTwo.$invalid">Too long!</div>
+            </md-input-container>
+            <md-input-container ng-if="main.template == 'template2' || main.template == 'template3'">
+                <label>Tekst lijn 3</label>
+                <input  name="textThree" ng-model="main.form.textThree" md-maxlength="70">
+                <div class="error" ng-if="templateForm.textThree.$invalid">Too long!</div>
+            </md-input-container>
+            <md-input-container ng-if="main.template == 'template3'">
+                <label>Tekst lijn 4</label>
+                <input  name="textFour" ng-model="main.form.textFour" md-maxlength="70">
+                <div class="error" ng-if="templateForm.textfour.$invalid">Too long!</div>
+            </md-input-container>
+            <md-button ng-click="main.sendToZapier(main.form)" class="md-raised">Send</md-button>
+        </div>
+    </form>
+</md-content>
