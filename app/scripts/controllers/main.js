@@ -53,16 +53,57 @@ angular.module('videoTemplaterFrontApp')
 
         this.sendToZapier = function(obj) {
 
+            var title;
+            var filename;
+            var textOne;
+            var textTwo;
+            var textThree;
+            var textFour;
+
+
+            if (obj.title) {
+                title = obj.title.toUpperCase();
+            }
+
+
+            if (obj.filename) {
+                filename = obj.filename.toUpperCase();
+            }
+
+
+            if (obj.textOne) {
+                textOne = obj.textOne.toUpperCase();
+            }
+
+
+            if (obj.textTwo) {
+                textTwo = obj.textTwo.toUpperCase();
+            }
+
+
+
+            if (obj.textThree) {
+                textThree = obj.textThree.toUpperCase();
+            }
+
+
+            if (obj.textFour) {
+                textFour = obj.textFour.toUpperCase();
+            }
+
+
+
+
             $http({
                 method: 'GET',
                 url: 'https://zapier.com/hooks/catch/2mep75/',
                 params: {
-                    'title': obj.title.toUpperCase(),
-                    'filename': obj.filename,
-                    'textOne': obj.textOne.toUpperCase(),
-                    'textTwo': obj.textTwo.toUpperCase(),
-                    'textThree': obj.textThree.toUpperCase(),
-                    'textFour': obj.textFour.toUpperCase()
+                    'title': title,
+                    'filename': filename,
+                    'textOne': textOne,
+                    'textTwo': textTwo,
+                    'textThree': textThree,
+                    'textFour': textFour
                 }
             }).then(function successCallback(response) {
                 console.log(response);
