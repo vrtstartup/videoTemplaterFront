@@ -2,7 +2,7 @@
     <form name="templateForm">
         <div layout="column" layout-align="center center" class="temp_form">
             <md-select placeholder="Choose template" ng-model="main.template">
-                <md-option ng-value="t.name" ng-repeat="t in main.templates">{{t.name}}</md-option>
+                <md-option ng-value="t.id" ng-repeat="t in main.templates">{{t.name}}</md-option>
             </md-select>
             <md-input-container>
                 <label>Filename</label>
@@ -22,12 +22,12 @@
                 <input  name="textTwo" ng-model="main.form.textTwo" md-maxlength="70">
                 <div class="error" ng-if="templateForm.textTwo.$invalid">Too long!</div>
             </md-input-container>
-            <md-input-container ng-if="main.template == 'template2' || main.template == 'template3'">
+            <md-input-container ng-if="main.template == 2 || main.template == 3">
                 <label>Tekst lijn 3</label>
                 <input  name="textThree" ng-model="main.form.textThree" md-maxlength="70">
                 <div class="error" ng-if="templateForm.textThree.$invalid">Too long!</div>
             </md-input-container>
-            <md-input-container ng-if="main.template == 'template3'">
+            <md-input-container ng-if="main.template == 3">
                 <label>Tekst lijn 4</label>
                 <input  name="textFour" ng-model="main.form.textFour" md-maxlength="70">
                 <div class="error" ng-if="templateForm.textfour.$invalid">Too long!</div>

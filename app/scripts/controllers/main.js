@@ -10,7 +10,7 @@
 angular.module('videoTemplaterFrontApp')
     .controller('MainCtrl', function($scope, $http) {
 
-
+                this.template = 1;
         this.form = '';
         var that = this;
 
@@ -19,11 +19,14 @@ angular.module('videoTemplaterFrontApp')
         };
 
         this.templates = [{
-            name: 'template1'
+            id: 1,
+            name: 'Titel + 2 tekstblokken'
         }, {
-            name: 'template2'
+            id: 2,
+            name: 'Titel + 3 tekstblokken'
         }, {
-            name: 'template3'
+            id: 3,
+            name: 'Titel + 4 tekstblokken'
         }];
 
 
