@@ -1,7 +1,7 @@
 <md-content layout-padding>
     <form name="templateForm">
         <div layout="column" layout-align="center center" class="temp_form">
-            <md-select placeholder="Choose template" ng-model="main.template">
+            <md-select placeholder="Choose template" ng-model="main.template" ng-change="main.form.template = main.template">
                 <md-option ng-value="t.id" ng-repeat="t in main.templates">{{t.name}}</md-option>
             </md-select>
             <md-input-container>

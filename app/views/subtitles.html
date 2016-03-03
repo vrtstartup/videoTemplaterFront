@@ -1,0 +1,64 @@
+<md-content layout-padding>
+    <form name="templateForm">
+        <div layout="column" layout-align="center center" class="temp_form">
+            <md-input-container>
+                <label>In</label>
+                <input name="file" ng-model="form.start" required>
+            </md-input-container>
+            <md-input-container>
+                <label>Out</label>
+                <input name="title" ng-model="form.end" required>
+            </md-input-container>
+            <md-input-container>
+                <label>text</label>
+                <input name="title" ng-model="form.text" required>
+            </md-input-container>
+            <md-button ng-click="addLine(form)" class="md-raised">Add Line</md-button>
+            <md-button ng-click="download(srtObj)" class="md-raised">Download</md-button>
+        </div>
+    </form>
+    <md-list>
+        <md-list-item ng-repeat="s in srtObj">
+            {{s.id}}
+            <div class="md-list-item-text" layout="row">
+                <input ng-model="s.start">
+                <input ng-model="s.end">
+                <textarea ng-model="s.text"></textarea>
+            </div>
+        </md-list-item>
+    </md-list>
+    <videogular vg-theme="videogular.theme" vg-player-ready="onPlayerReady($API)">
+        <vg-media vg-src="videogular.sources" vg-tracks="videogular.tracks">
+        </vg-media>
+        <vg-controls>
+            <vg-play-pause-button></vg-play-pause-button>
+            <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+            <vg-scrub-bar>
+                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+            </vg-scrub-bar>
+            <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+            <vg-volume>
+                <vg-mute-button></vg-mute-button>
+                <vg-volume-bar></vg-volume-bar>
+            </vg-volume>
+            <vg-fullscreen-button></vg-fullscreen-button>
+        </vg-controls>
+        <vg-overlay-play></vg-overlay-play>
+        <vg-poster vg-url='videogular.plugins.poster'></vg-poster>
+    </videogular>
+    <form role="form" action="/" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="onixfile"></label>
+            <input type="file" id="onixfile" name="onixfile" placeholder="">
+        </div>
+    </form>
+    <!--    <div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true" accept="video/*" ngf-pattern="'video/*'">Drop Video or click to upload</div>
+    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+    Files:
+    <ul>
+        <li ng-repeat="f in files" style="font:smaller">{{f}}
+        {{f.name}} {{f.$error}} {{f.$errorParam}}</li>
+    </ul>
+    Upload Log:
+    <pre>{{log}}</pre> -->
+</md-content>

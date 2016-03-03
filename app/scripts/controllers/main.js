@@ -10,7 +10,7 @@
 angular.module('videoTemplaterFrontApp')
     .controller('MainCtrl', function($scope, $http) {
 
-                this.template = 1;
+        this.template = 1;
         this.form = '';
         var that = this;
 
@@ -56,17 +56,35 @@ angular.module('videoTemplaterFrontApp')
 
         this.sendToZapier = function(obj) {
 
+console.log(obj);
             var title;
             var filename;
             var textOne;
             var textTwo;
             var textThree;
             var textFour;
+            var template;
 
-
-            if (obj.title) {
-                title = obj.title.toUpperCase();
+            switch (obj.template) {
+                case 1:
+                    template = '/Users/bresciapc/Dropbox (Vrt Startup)/Vrt Startup Team Folder/NieuwsHub/Lab/01_templater/Template_Text_02.aep';
+                    break;
+                case 2:
+                    template = '/Users/bresciapc/Dropbox (Vrt Startup)/Vrt Startup Team Folder/NieuwsHub/Lab/01_templater/Template_Text_03.aep';
+                    break;
+                case 3:
+                    template = '/Users/bresciapc/Dropbox (Vrt Startup)/Vrt Startup Team Folder/NieuwsHub/Lab/01_templater/Template_Text_04.aep';
+                    break;
+                default:
+                    template = '/Users/bresciapc/Dropbox (Vrt Startup)/Vrt Startup Team Folder/NieuwsHub/Lab/01_templater/Template_Text_02.aep';
             }
+
+
+
+
+                if (obj.title) {
+                    title = obj.title.toUpperCase();
+                }
 
 
             if (obj.filename) {
@@ -101,8 +119,11 @@ angular.module('videoTemplaterFrontApp')
                 method: 'GET',
                 url: 'https://zapier.com/hooks/catch/2mep75/',
                 params: {
+                    'render-status': 'ready',
+                    'target': 'Export Composition',
+                    'template': template,
                     'title': title,
-                    'filename': filename,
+                    'filename': filename + '_ae',
                     'textOne': textOne,
                     'textTwo': textTwo,
                     'textThree': textThree,
