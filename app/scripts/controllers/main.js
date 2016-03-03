@@ -131,6 +131,7 @@ console.log(obj);
                 }
             }).then(function successCallback(response) {
                 console.log(response);
+                console.log(template);
                 resetForm();
 
             }, function errorCallback(response) {
