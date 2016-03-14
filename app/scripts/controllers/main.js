@@ -31,6 +31,38 @@ angular.module('videoTemplaterFrontApp')
 
 
 
+        var options = {
+            files: [
+                // You can specify up to 100 files.
+                { 'url': 'https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/HT1425/sample_iPod.m4v.zip', 'filename': 'testvideo.m4v' },
+
+                // ...
+            ],
+
+            // Success is called once all files have been successfully added to the user's
+            // Dropbox, although they may not have synced to the user's devices yet.
+            success: function() {
+                // Indicate to the user that the files have been saved.
+                alert("Success! Files saved to your Dropbox.");
+            },
+
+            // Progress is called periodically to update the application on the progress
+            // of the user's downloads. The value passed to this callback is a float
+            // between 0 and 1. The progress callback is guaranteed to be called at least
+            // once with the value 1.
+            progress: function(progress) {},
+
+            // Cancel is called if the user presses the Cancel button or closes the Saver.
+            cancel: function() {},
+
+            // Error is called in the event of an unexpected response from the server
+            // hosting the files, such as not being able to find a file. This callback is
+            // also called if there is an error on Dropbox or if the user is over quota.
+            error: function(errorMessage) {}
+        };
+        var button = Dropbox.createSaveButton(options);
+        document.getElementById("container").appendChild(button);
+
 
         this.sendToDropbox = function() {
 
@@ -56,7 +88,7 @@ angular.module('videoTemplaterFrontApp')
 
         this.sendToZapier = function(obj) {
 
-console.log(obj);
+            console.log(obj);
             var title;
             var filename;
             var textOne;
@@ -66,25 +98,26 @@ console.log(obj);
             var template;
 
             switch (obj.template) {
+
                 case 1:
-                    template = '/Users/bresciapc/Dropbox (Vrt Startup)/Vrt Startup Team Folder/NieuwsHub/Lab/01_templater/Template_Text_02.aep';
+                    template = 'C:\\Users\\chiafis\\Dropbox (Vrt Startup)\\Vrt Startup Team Folder\\NieuwsHub\\Lab\\01_templater\\win_ae\\Template_Text_02.aep';
                     break;
                 case 2:
-                    template = '/Users/bresciapc/Dropbox (Vrt Startup)/Vrt Startup Team Folder/NieuwsHub/Lab/01_templater/Template_Text_03.aep';
+                    template = 'C:\\Users\\chiafis\\Dropbox (Vrt Startup)\\Vrt Startup Team Folder\\NieuwsHub\\Lab\\01_templater\\win_ae\\Template_Text_03.aep';
                     break;
                 case 3:
-                    template = '/Users/bresciapc/Dropbox (Vrt Startup)/Vrt Startup Team Folder/NieuwsHub/Lab/01_templater/Template_Text_04.aep';
+                    template = 'C:\\Users\\chiafis\\Dropbox (Vrt Startup)\\Vrt Startup Team Folder\\NieuwsHub\\Lab\\01_templater\\win_ae\\Template_Text_04.aep';
                     break;
                 default:
-                    template = '/Users/bresciapc/Dropbox (Vrt Startup)/Vrt Startup Team Folder/NieuwsHub/Lab/01_templater/Template_Text_02.aep';
+                    template = 'C:\\Users\\chiafis\\Dropbox (Vrt Startup)\\Vrt Startup Team Folder\\NieuwsHub\\Lab\\01_templater\\win_ae\\Template_Text_02.aep';
             }
 
 
 
 
-                if (obj.title) {
-                    title = obj.title.toUpperCase();
-                }
+            if (obj.title) {
+                title = obj.title.toUpperCase();
+            }
 
 
             if (obj.filename) {
